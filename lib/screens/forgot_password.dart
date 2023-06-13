@@ -41,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Image.asset('assets/employee image.png'),
+              child: Image.asset('assets/employee_image.png'),
             ),
             const SizedBox(height: 20.0),
             Padding(

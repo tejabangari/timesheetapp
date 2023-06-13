@@ -17,7 +17,9 @@ class ProviderState extends ChangeNotifier {
   
   ProviderState({this.name, this.age, this.selectGender, this.selectDepartment});
 
-  Future<void> storeData()async{
+  Future<void> storeData(
+    name,age,selectGender,selectDepartment
+  )async{
     User? user = await FirebaseAuth.instance.currentUser;
     FirebaseFirestore.instance.collection('profileDetails').doc(user?.uid).set(
       {
@@ -30,10 +32,10 @@ class ProviderState extends ChangeNotifier {
     notifyListeners();
 
   }
- Future<void> getData(String? name, int? age, String? selectGender, String? selectDepartment) async {
+ Future<void> getData() async {
     User? user = await FirebaseAuth.instance.currentUser!;
     DocumentSnapshot doc = await FirebaseFirestore.instance
-        .collection('user')
+        .collection('profileDetails')
         .doc(user.uid)
         .get();
         if(doc.data() != null){

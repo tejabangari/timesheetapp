@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset(
-                'assets/employee image.png',
+                'assets/employee_image.png',
                 fit: BoxFit.contain,
               ),
               SizedBox(height: 20),

@@ -1,3 +1,4 @@
+import 'package:employee_timesheet/provider/luser_provider.dart';
 import 'package:employee_timesheet/screens/home_page.dart';
 import 'package:employee_timesheet/screens/login_page.dart';
 import 'package:employee_timesheet/screens/signup_page.dart';
@@ -20,6 +21,14 @@ class MyApp extends StatelessWidget {
   // late final User user;
   @override
   Widget build(BuildContext context) {
+    //  MultiProvider(
+    //   providers: [
+    //     Provider<ProviderState>(
+    //       create: (context) => ProviderState(),
+    //     ),
+    //   ],
+    // );
+
     return 
     StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context,snapshot){

@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       MultiProvider(providers: [
                                                          ChangeNotifierProvider(create: (context) => ProviderState(),)
                                                       ],
-                                                      // builder: (context, child) => const EmployeeProfile(user: User,),
+                                                      builder: (context, child) => const EmployeeProfile()
                                                       ),
                                                 ),
                                               );

@@ -7,7 +7,7 @@ var _category = ["Male", "Female", "Other"];
 var _department = ['Development', 'Management', 'others'];
 logoWidget() {
   return Image.asset(
-    'assets/employee image.png',
+   'assets/employee_image.png' ,
     fit: BoxFit.fitWidth,
     width: 100,
     height: 100,

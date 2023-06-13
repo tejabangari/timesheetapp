@@ -1,4 +1,5 @@
 import 'package:employee_timesheet/screens/home_page.dart';
+import 'package:employee_timesheet/screens/login_page.dart';
 import 'package:employee_timesheet/screens/profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _SignUpState extends State<SignUp> {
     if (res == "Success") {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => LoginScreen(),
         ),
       );
     }
@@ -64,7 +65,7 @@ class _SignUpState extends State<SignUp> {
                   top: 150, left: 30, right: 30, bottom: 550),
               child: Column(
                 children: <Widget>[
-                  // logoWidget(),
+                  logoWidget(),
                   const SizedBox(
                     height: 10,
                   ),
@@ -89,7 +90,13 @@ class _SignUpState extends State<SignUp> {
                     "Sign Up",
                     () {
                       FocusScope.of(context).requestFocus(FocusNode());
+
                       registerUser();
+                      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ),
+      );
                     },
                   )
                 ],
