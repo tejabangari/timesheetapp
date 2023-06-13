@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "813427746126",
+    "project_id": "employee-timesheet-219a0",
+    "storage_bucket": "employee-timesheet-219a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813427746126:android:37157789591054d5b1ea1f",
+        "android_client_info": {
+          "package_name": "com.example.employee_timesheet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813427746126-3bu4ct58gcbncmjg0q1pauc6t9gsebmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwZ4AwdJX3rDYaqaCyjPhpawMKzAkKhD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813427746126-3bu4ct58gcbncmjg0q1pauc6t9gsebmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
