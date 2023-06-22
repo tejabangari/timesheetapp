@@ -35,7 +35,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Employee Details'),
+          title: const Text('Forgot Password'),
         ),
         body: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[

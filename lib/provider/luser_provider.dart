@@ -8,49 +8,101 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProviderState extends ChangeNotifier {
-
- User? user;
+  User? user;
   String? name;
-  int? age;
+  String? age;
   String? selectGender;
   String? selectDepartment;
-  
-  ProviderState({this.name, this.age, this.selectGender, this.selectDepartment});
+  String? imageUrl;
+  PickedFile? _imageFile;
+  PickedFile? get imageFile => _imageFile;
+
+  final ImagePicker _picker = ImagePicker();
+
+  ProviderState(
+      {this.name, this.age, this.selectGender, this.selectDepartment});
+  TextEditingController ageController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   Future<void> storeData(
-    name,age,selectGender,selectDepartment
-  )async{
+    String name,
+    String age,
+    String? selectGender,
+    String? selectDepartment,
+  ) async {
     User? user = await FirebaseAuth.instance.currentUser;
     FirebaseFirestore.instance.collection('profileDetails').doc(user?.uid).set(
       {
         'name': name,
-        'age':age,
-        'gender':selectGender,
-        'department':selectDepartment
-      }
+        'age': age,
+        'gender': selectGender,
+        'department': selectDepartment,
+      },
     );
-    notifyListeners();
+    if (_imageFile != null) {
+      String uniqueFileName = DateTime.now().millisecondsSinceEpoch.toString();
+      Reference ref = FirebaseStorage.instance.ref();
+      Reference refDirImages = ref.child('profileImages');
+      Reference refImageToUpload = refDirImages.child(uniqueFileName);
+      try {
+        await refImageToUpload.putFile(File(_imageFile!.path));
+        imageUrl = await refImageToUpload.getDownloadURL();
+      } catch (error) {
+        print(error.toString());
+      }
+    }
+    // Update the values in the ProviderState instance
+    this.name = name;
+    this.age = age;
+    this.selectGender = selectGender;
+    this.selectDepartment = selectDepartment;
 
+    notifyListeners();
   }
- Future<void> getData() async {
+
+  Future<void> getData() async {
     User? user = await FirebaseAuth.instance.currentUser!;
     DocumentSnapshot doc = await FirebaseFirestore.instance
         .collection('profileDetails')
         .doc(user.uid)
         .get();
-        if(doc.data() != null){
-    Map<String, dynamic> details = doc.data() as Map<String, dynamic> ;
-    name = details['name'];
-    age = details['age'];
-    selectGender = details['gender'];
-    selectDepartment = details['department'];
-        }
-        notifyListeners();
+    if (doc.data() != null) {
+      Map<String, dynamic> details = doc.data() as Map<String, dynamic>;
+      nameController.text = details['name'];
+      ageController.text = details['age'];
+      selectGender = details['gender'];
+      selectDepartment = details['department'];
+    }
+    notifyListeners();
   }
 
+  Future<void> getImage() async {
+    try {
+      final picker = ImagePicker();
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        _imageFile = pickedFile;
+        notifyListeners();
+      }
+    } catch (e) {
+      print('Error picking image: $e');
+    }
+  }
 }
 
-
+// Future<void> getImage() async {
+//     try {
+//       final picker = ImagePicker();
+//       final pickedFile = await picker.getImage(source: ImageSource.gallery);
+//       if (pickedFile != null) {
+//          _imageFile = File(pickedFile.path) as PickedFile?;
+//         notifyListeners();
+//       }
+//     } catch (e) {
+//       print('Error picking image: $e');
+//     }
+//   }
+// }
 
 
 //   final formkey = GlobalKey<FormState>();
@@ -118,4 +170,22 @@ class ProviderState extends ChangeNotifier {
 //   }
 
 
+
+
+
+// Future<void> storeData(
+  //   name,age,selectGender,selectDepartment
+  // )async{
+  //   User? user = await FirebaseAuth.instance.currentUser;
+  //   FirebaseFirestore.instance.collection('profileDetails').doc(user?.uid).set(
+  //     {
+  //       'name': name,
+  //       'age':age,
+  //       'gender':selectGender,
+  //       'department':selectDepartment
+  //     }
+  //   );
+  //   notifyListeners();
+
+  // }
 

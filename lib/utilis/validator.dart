@@ -61,5 +61,32 @@ class Validator{
     return null;
 
   }
+  static String? validateDescription(String text, {
+    required String? description
+  }){
+    if(description == null){
+      return'Enter canot be empty';
 
+    }
+    return null;
+  }
+  static String? validateLoginTime(DateTime? loginTime) {
+    if (loginTime == null) {
+      return 'Login time is required';
+    }
+    return null;
+  }
+  static String? validateLogoutTime(DateTime? logoutTime) {
+    if (logoutTime == null) {
+      return 'Logout time is required';
+    }
+    return null;
+  }
+   static String? validateSelectedDate(DateTime? selectedDate) {
+    if (selectedDate == null) {
+      return 'Selected date is required';
+    }
+    return null;
+  }
 }
+

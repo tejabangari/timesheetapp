@@ -36,22 +36,22 @@ TextFormField reusableTextField(
     obscureText: isPasswordType,
     enableSuggestions:!isPasswordType ,
     autocorrect: !isPasswordType,
-    cursorColor: Colors.black,
+    cursorColor: Colors.grey,
     textInputAction: isPasswordType? TextInputAction.done : TextInputAction.next,
     onSaved: (value) => value = value,
     style: TextStyle(color: Colors.black.withOpacity(0.9)),
     decoration: InputDecoration(
       prefixIcon: Icon(
         icon,
-        color: Colors.black,
+        color: Colors.red,
       ),
        labelText: text,
       labelStyle: TextStyle(
-        color: Colors.black.withOpacity(0.9),
+        color: Colors.blue.withOpacity(0.9),
       ),
        filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      fillColor: Colors.black.withOpacity(0.3),
+      fillColor: Colors.blue.withOpacity(0.3),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
           borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
@@ -79,9 +79,9 @@ Widget button(BuildContext context, String title, Function onTap) {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.pressed)) {
-            return Colors.black26;
+            return Colors.blue;
           }
-          return Colors.black;
+          return Colors.blue;
         }),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -90,7 +90,7 @@ Widget button(BuildContext context, String title, Function onTap) {
       child: Text(
         title,
         style: const TextStyle(
-            color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16),
+            color: Colors.redAccent, fontWeight: FontWeight.bold, fontSize: 16),
       ),
     ),
   );
@@ -151,7 +151,7 @@ dropDown(context, String labelText, List<String> itemsList, IconData icon,
                   value: option,
                   child: Text(
                     "$option",
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.redAccent),
                   ),
                 );
               }).toList(),

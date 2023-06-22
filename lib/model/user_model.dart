@@ -36,6 +36,7 @@ class UserData{
   String? selectGender;
   String? selectDepartment;
  UserData({this.name, this.age, this.selectGender, this.selectDepartment});
+ 
 
   Map<String, dynamic> toJson() {
     return {
@@ -46,7 +47,7 @@ class UserData{
     };
   }
 
-  static UserData fromMap(Map<String, dynamic> map) {
+ UserData fromMap(Map<String, dynamic> map) {
     return UserData(
         name: map['name'],
         age: map['age'],

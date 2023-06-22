@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     
        Scaffold(
         appBar: AppBar(
-          title: Text('Employee Timesheet'),
+          title: Text('Login'),
         ),
        
    body: Container(
